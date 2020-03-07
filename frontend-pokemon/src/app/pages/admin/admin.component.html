@@ -1,0 +1,32 @@
+<div class="col-12 d-inline-flex p-0">
+  <mat-form-field class="col-4" appearance="legacy">
+    <mat-label>Filtrar </mat-label>
+    <mat-icon class="mat-18" matSuffix>search</mat-icon>
+    <input matInput type="text" autocomplete="off" (keyup)="filtrar($event.target.value)">
+  </mat-form-field>
+  <div class="col-4 d-flex flex-column-reverse align-items-end">
+    <small><b>Obs:</b> Para editar ou remover, clique na linha da tabela correspondente ao Pokémon.</small>
+  </div>
+  <div class="col-4 text-center d-flex flex-column align-items-end">
+    <button mat-raised-button class="mat-elevation-z9" (click)="addPokemon()">
+      + Adicionar Pokémon
+    </button>
+  </div>
+</div>
+
+<div class="mat-elevation-z9 mb-5 mt-2 div-table p-0">
+  <mat-progress-bar mode="indeterminate" *ngIf="bload"></mat-progress-bar>
+  <table mat-table [dataSource]="dataSource" matSort class="col-12 table-responsive w-100 h-100">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> {{column}}
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element[column]}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" class="row-hover" (click)="editOrRemove(row)">
+    </mat-row>
+  </table>
+  <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 15, 30, 50]" showFirstLastButtons
+    class="mat-elevation-z9">
+  </mat-paginator>
+</div>

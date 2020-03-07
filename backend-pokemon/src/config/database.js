@@ -1,6 +1,6 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const dbUrl = process.env.MONGO_URL;
+const dbUrl = process.env.API_URL;
 const dbOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,

@@ -1,0 +1,23 @@
+<div class="col-12 d-inline-flex justify-content-between">
+  <h4>Exemplo para editar ou excluir dados da tabela Pokémon</h4>
+  <mat-icon (click)="cancelar()" class="div-hover">cancel</mat-icon>
+</div>
+<hr>
+<div class="flex-wrap" *ngFor="let p of pokemon">
+  <mat-form-field class="col-2" appearance="outline" *ngFor="let c of columns">
+    <mat-label fixed>{{c}}</mat-label>
+    <input matInput type="text" value="{{ p[c] }}">
+  </mat-form-field>
+</div>
+
+<hr>
+<div class=" col-12 d-flex justify-content-end">
+  <button mat-raised-button color="warn" class="mr-3">
+    <mat-icon class="mr-1">delete</mat-icon>
+    EXCLUIR
+  </button>
+  <button mat-raised-button color="primary">
+    <mat-icon class="mr-1">edit</mat-icon>
+    EDITAR
+  </button>
+</div>

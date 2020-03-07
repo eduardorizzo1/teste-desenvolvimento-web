@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+$bg-toolbar: linear-gradient(to bottom, rgb(0, 0, 65), rgb(0, 0, 92), rgb(3, 3, 124), rgb(0, 0, 161)) !important;
+$bg-sidenav: linear-gradient(to bottom, white, white, white, white, white, rgb(204, 226, 250), darkgreen) !important;
+
+.div-hover {
+  cursor: pointer;
+}
+
+.toolbar-color-custom {
+  color: white;
+  background-image: $bg-toolbar;
+}
+
+.bg-sidenav {
+  background-image: $bg-sidenav;
+}
+
+.img-menu {
+  height: 40px;
+}
+
+.img-pokebola {
+  height: 15px;
+  width: 15px;
+}
+
+.h-64 {
+  height: 64px;
+}
