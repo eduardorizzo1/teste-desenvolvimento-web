@@ -3,21 +3,124 @@
   <mat-icon (click)="cancelar()" class="div-hover">cancel</mat-icon>
 </div>
 <hr>
-<div class="flex-wrap" *ngFor="let p of pokemon">
-  <mat-form-field class="col-2" appearance="outline" *ngFor="let c of columns">
-    <mat-label fixed>{{c}}</mat-label>
-    <input matInput type="text" value="{{ p[c] }}">
-  </mat-form-field>
-</div>
 
-<hr>
-<div class=" col-12 d-flex justify-content-end">
-  <button mat-raised-button color="warn" class="mr-3">
-    <mat-icon class="mr-1">delete</mat-icon>
-    EXCLUIR
-  </button>
-  <button mat-raised-button color="primary">
-    <mat-icon class="mr-1">edit</mat-icon>
-    EDITAR
-  </button>
-</div>
+<form [formGroup]="pokemonForm" *ngFor="let p of pokemon">
+  <div class="col-12 p-0 d-inline-flex">
+    <div class="col-10">
+      <mat-form-field class="col-2">
+        <mat-label>Row:</mat-label>
+        <input matInput type="text" formControlName="Row">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>Name:</mat-label>
+        <input matInput type="text" formControlName="Name" value="{{p.Name}}">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>PokedexNumber:</mat-label>
+        <input matInput type="number" formControlName="PokedexNumber">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>ImgName:</mat-label>
+        <input matInput type="number" formControlName="ImgName">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>Generation:</mat-label>
+        <input matInput type="number" formControlName="Generation">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>EvolutionStage:</mat-label>
+        <input matInput type="number" formControlName="EvolutionStage">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>FamilyID:</mat-label>
+        <input matInput type="number" formControlName="FamilyID">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>Type1:</mat-label>
+        <input matInput type="text" formControlName="Type1">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>Type2:</mat-label>
+        <input matInput type="text" formControlName="Type2">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>Weather1:</mat-label>
+        <input matInput type="text" formControlName="Weather1">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>Weather2:</mat-label>
+        <input matInput type="text" formControlName="Weather2">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>StatTotal:</mat-label>
+        <input matInput type="number" formControlName="StatTotal">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>ATK:</mat-label>
+        <input matInput type="number" formControlName="ATK">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>DEF:</mat-label>
+        <input matInput type="number" formControlName="DEF">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>STA:</mat-label>
+        <input matInput type="number" formControlName="STA">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>Aquireable:</mat-label>
+        <input matInput type="number" formControlName="Aquireable">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>Spawns:</mat-label>
+        <input matInput type="number" formControlName="Spawns">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>Regional:</mat-label>
+        <input matInput type="number" formControlName="Regional">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>Raidable:</mat-label>
+        <input matInput type="number" formControlName="Raidable">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>Hatchable:</mat-label>
+        <input matInput type="number" formControlName="Hatchable">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>FutureEvolve:</mat-label>
+        <input matInput type="text" formControlName="FutureEvolve">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>cp40:</mat-label>
+        <input matInput type="number" formControlName="cp40">
+      </mat-form-field>
+      <mat-form-field class="col-2">
+        <mat-label>cp39:</mat-label>
+        <input matInput type="number" formControlName="cp39">
+      </mat-form-field>
+    </div>
+    <div class="col-2 d-flex flex-column  border-left pt-2">
+      <mat-checkbox matInput type="text" formControlName="Evolved" color="primary">Evolved</mat-checkbox>
+      <mat-checkbox matInput type="text" formControlName="CrossGen" color="primary">CrossGen</mat-checkbox>
+      <mat-checkbox matInput type="text" formControlName="Legendary" color="primary">Legendary</mat-checkbox>
+      <mat-checkbox matInput type="text" formControlName="Shiny" color="primary">Shiny</mat-checkbox>
+      <mat-checkbox matInput type="text" formControlName="Nest" color="primary">Nest</mat-checkbox>
+      <mat-checkbox matInput type="text" formControlName="New" color="primary">New</mat-checkbox>
+      <mat-checkbox matInput type="text" formControlName="NotGettable" color="primary">NotGettable</mat-checkbox>
+    </div>
+  </div>
+
+  <hr>
+  <div class=" col-12 d-flex justify-content-end">
+    <button mat-raised-button color="warn" class="mr-3" (click)="deletePokemon(p)">
+      <mat-icon class="mr-1">delete</mat-icon>
+      EXCLUIR
+    </button>
+    <button mat-raised-button color="primary">
+      <mat-icon class="mr-1">edit</mat-icon>
+      EDITAR
+    </button>
+  </div>
+
+</form>

@@ -13,6 +13,7 @@ export class PokemonsComponent implements OnInit {
   dataSource = new MatTableDataSource<Pokemon>(this.pokemons);
   expandedElement: Pokemon | null;
   bload: boolean = false;
+  checked: boolean;
   displayedColumns: string[] = [
     "Row",
     "Name",

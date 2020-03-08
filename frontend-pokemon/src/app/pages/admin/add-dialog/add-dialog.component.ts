@@ -2,6 +2,7 @@ import { Pokemon } from "./../../../models/pokemon";
 import { PokemonsService } from "src/app/services/pokemons.service";
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: "app-add-dialog",
@@ -13,7 +14,8 @@ export class AddDialogComponent implements OnInit {
 
   constructor(
     public fb: FormBuilder,
-    private pokemonService: PokemonsService
+    private pokemonService: PokemonsService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit() {
@@ -56,7 +58,19 @@ export class AddDialogComponent implements OnInit {
   }
 
   submitForm() {
+    this.addError();
     const pokemon: Pokemon = this.pokemonForm.value;
-    this.pokemonService.post(pokemon).subscribe();
+    this.pokemonService.post(pokemon).subscribe(
+      res => this.addSuccess(),
+      err => this.addError()
+    );
+  }
+
+  addSuccess() {
+    this.toastr.success("Pokémon adicionado com sucesso!");
+  }
+
+  addError() {
+    this.toastr.error("Erro ao adicionar Pokémon.");
   }
 }

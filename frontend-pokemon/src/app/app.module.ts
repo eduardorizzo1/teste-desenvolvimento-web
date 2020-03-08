@@ -9,6 +9,7 @@ import { PokemonsComponent } from "./pages/pokemons/pokemons.component";
 
 import { MaterialModule } from "../material.module";
 import { customLabel } from "../custom-table";
+import { ToastrModule } from "ngx-toastr";
 
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -35,7 +36,11 @@ import { AddDialogComponent } from "./pages/admin/add-dialog/add-dialog.componen
     HttpClientModule,
     FormsModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      preventDuplicates: true
+    })
   ],
   entryComponents: [EditRemoveDialogComponent, AddDialogComponent],
 

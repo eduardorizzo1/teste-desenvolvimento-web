@@ -7,10 +7,171 @@
 <div class="mat-elevation-z9 mb-5 mt-2 div-table p-0">
   <mat-progress-bar mode="indeterminate" *ngIf="bload"></mat-progress-bar>
   <table mat-table [dataSource]="dataSource" matSort class="col-12 table-responsive w-100 h-100">
-    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> {{column}}
+    <ng-container matColumnDef="Row">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Row
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element[column]}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.Row}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Name" sticky>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="bg-light"> {{element.Name}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="PokedexNumber">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Pokedex Number
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.PokedexNumber}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ImgName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Img name
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ImgName}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Generation">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Generation
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Generation}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="EvolutionStage">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Evolution Stage
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.EvolutionStage}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Evolved">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Evolved
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox [checked]="element.Evolved" color="primary" disabled></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="FamilyID">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> FamilyID
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.FamilyID}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="CrossGen">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Cross Gen
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox [checked]="element.CrossGen" color="primary" disabled></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Type1">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Type 1
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Type1}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Type2">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Type 2
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Type2}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Weather1">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Weather 1
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Weather1}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Weather2">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Weather 2
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Weather2}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="StatTotal">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> STAT TOTAL
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.StatTotal}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ATK">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ATK
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ATK}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="DEF">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> DEF
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.DEF}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="STA">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> STA
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.STA}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Legendary">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Legendary
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox [checked]="element.Legendary" color="primary" disabled></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Aquireable">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Aquireable
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Aquireable}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Spawns">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Spawns
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Spawns}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Regional">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Regional
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Regional}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Raidable">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Raidable
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Raidable}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Hatchable">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Hatchable
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Hatchable}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Shiny">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Shiny
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox [checked]="element.Shiny" color="primary" disabled></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Nest">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Nest
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox [checked]="element.Nest" color="primary" disabled></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="New">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> New
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox [checked]="element.New" color="primary" disabled></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="NotGettable">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Not - Gettable
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox [checked]="element.NotGettable" color="primary" disabled></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="FutureEvolve">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Future Evolve
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-checkbox [checked]="element.FutureEvolve" color="primary" disabled></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="cp40">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 100 % CP @40
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.cp40}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="cp39">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> 100 % CP @39
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.cp39}} </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
@@ -19,3 +180,9 @@
     class="mat-elevation-z9">
   </mat-paginator>
 </div>
+
+<!-- <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> {{column}}
+  </mat-header-cell>
+  <mat-cell *matCellDef="let element"> {{element[column]}} </mat-cell>
+</ng-container> -->

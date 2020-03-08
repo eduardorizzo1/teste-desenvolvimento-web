@@ -1,6 +1,9 @@
+import { PokemonsService } from "src/app/services/pokemons.service";
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { Pokemon } from "src/app/models/pokemon";
+import { ToastrService } from "ngx-toastr";
+import { FormGroup, FormBuilder } from "@angular/forms";
 
 @Component({
   selector: "app-edit-remove-dialog",
@@ -9,6 +12,7 @@ import { Pokemon } from "src/app/models/pokemon";
 })
 export class EditRemoveDialogComponent implements OnInit {
   pokemon: Pokemon[] = [];
+  pokemonForm: FormGroup;
   columns: string[] = [
     "Row",
     "Name",
@@ -44,15 +48,67 @@ export class EditRemoveDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<EditRemoveDialogComponent>,
+    public fb: FormBuilder,
+    public pokemonService: PokemonsService,
     @Inject(MAT_DIALOG_DATA) public p: Pokemon[]
   ) {
     console.log(p);
     this.pokemon = p;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.buildPokemonForm();
+  }
 
   cancelar() {
     this.dialogRef.close();
+  }
+
+  deletePokemon(pokemon: Pokemon) {
+    const confirmDelete = confirm(
+      "Tem certeza que deseja excluir esse Pokémon?"
+    );
+
+    if (confirmDelete) {
+      this.pokemonService.delete(pokemon._id).subscribe(
+        () => (this.pokemon = this.pokemon.filter(e => e !== pokemon)),
+        err => console.log(err)
+      );
+    }
+  }
+
+  buildPokemonForm() {
+    this.pokemonForm = this.fb.group({
+      Row: [null],
+      Name: [null],
+      PokedexNumber: [null],
+      ImgName: [null],
+      Generation: [null],
+      EvolutionStage: [null],
+      Evolved: [false],
+      FamilyID: [null],
+      CrossGen: [false],
+      Type1: [null],
+      Type2: [null],
+      Weather1: [null],
+      Weather2: [null],
+      StatTotal: [null],
+      ATK: [null],
+      DEF: [null],
+      STA: [null],
+      Legendary: [false],
+      Aquireable: [null],
+      Spawns: [null],
+      Regional: [null],
+      Raidable: [null],
+      Hatchable: [null],
+      Shiny: [false],
+      Nest: [false],
+      New: [false],
+      NotGettable: [false],
+      FutureEvolve: [null],
+      cp40: [null],
+      cp39: [null]
+    });
   }
 }

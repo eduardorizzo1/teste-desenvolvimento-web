@@ -1,7 +1,7 @@
+import { Pokemon } from "src/app/models/pokemon";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { Pokemon } from "../models/pokemon";
 import { map } from "rxjs/operators";
 
 @Injectable({
@@ -28,9 +28,15 @@ export class PokemonsService {
       .pipe(map(this.jsonPokemon));
   }
 
-  edit() {}
+  edit(pokemon: Pokemon): Observable<Pokemon> {
+    const url = `${this.apiUrl}/${pokemon._id}`;
+    return this.http.put(url, pokemon).pipe(map(() => pokemon));
+  }
 
-  delete() {}
+  delete(_id): Observable<any> {
+    const url = `${this.apiUrl}/${_id}`;
+    return this.http.delete(url).pipe(map(() => null));
+  }
 
   private jsonPokemons(json: any[]): Pokemon[] {
     const pokemons: Pokemon[] = [];
