@@ -12,7 +12,6 @@ class App {
   }
 
   middleware() {
-    this.server.use(cors());
     this.server.use(bodyParser.json());
     this.server.use(bodyParser.urlencoded({ extended: true }));
   }
