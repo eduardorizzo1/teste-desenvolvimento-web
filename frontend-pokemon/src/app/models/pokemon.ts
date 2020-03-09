@@ -31,36 +31,3 @@ export interface Pokemon {
   cp40?: number;
   cp39?: number;
 }
-
-// export interface Pokemon {
-//   Row: number;
-//   Name: string;
-//   "Pokedex number": number;
-//   "Img name": string;
-//   Generation: number;
-//   "Evolution Stage": string;
-//   Evolved: boolean;
-//   FamilyID: number;
-//   "Cross Gen": boolean;
-//   "Type 1": string;
-//   "Type 2": string;
-//   "Weather 1": string;
-//   "Weather 2": string;
-//   "STAT TOTAL": number;
-//   ATK: number;
-//   DEF: number;
-//   STA: number;
-//   Legendary: boolean;
-//   Aquireable: number;
-//   Spawns: number;
-//   Regional: number;
-//   Raidable: number;
-//   Hatchable: number;
-//   Shiny: boolean;
-//   Nest: boolean;
-//   New: boolean;
-//   "Not-Gettable": boolean;
-//   "Future Evolve": boolean;
-//   "100% CP @ 40": number;
-//   "100% CP @ 39": number;
-// }

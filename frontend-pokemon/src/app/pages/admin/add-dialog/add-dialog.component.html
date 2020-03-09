@@ -13,6 +13,7 @@
       <mat-form-field class="col-2">
         <mat-label>Name:</mat-label>
         <input matInput type="text" formControlName="Name">
+        <mat-hint *ngIf="!pokemonForm.valid" class="text-danger">*Campo obrigatório</mat-hint>
       </mat-form-field>
       <mat-form-field class="col-2">
         <mat-label>PokedexNumber:</mat-label>

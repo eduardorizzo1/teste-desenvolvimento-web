@@ -22,6 +22,7 @@ export class AdminComponent implements OnInit {
   dataSource = new MatTableDataSource<Pokemon>(this.pokemons);
   bload: boolean = false;
   newPokemon: Pokemon;
+  editPokemon: Pokemon[] = [];
   displayedColumns: string[] = [
     "Row",
     "Name",
@@ -103,8 +104,15 @@ export class AdminComponent implements OnInit {
       data: [pokemon]
     });
     dialog.afterClosed().subscribe(res => {
-      console.log(res);
+      if (res) this.update(res);
     });
+  }
+
+  update(pokemon: Pokemon) {
+    this.pokemonService.edit(pokemon).subscribe(
+      () => this.toastrInfo(),
+      () => this.tostrError("editar")
+    );
   }
 
   post(pokemon: Pokemon) {
@@ -136,5 +144,9 @@ export class AdminComponent implements OnInit {
 
   tostrError(msg) {
     return this.toastr.error(`Erro ao ${msg} Pokémon`);
+  }
+
+  toastrInfo() {
+    return this.toastr.info(`O Pokémon foi alterado.`);
   }
 }
