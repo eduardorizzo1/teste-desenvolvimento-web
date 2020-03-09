@@ -20,7 +20,7 @@ class PokemonController {
 
   async put(req, res) {
     await Pokemon.findByIdAndUpdate(req.params.id, { $set: req.body });
-    let pokemon = await findById(req.params.id);
+    let pokemon = await Pokemon.findById(req.params.id);
     return res.status(202).send(pokemon);
   }
 
