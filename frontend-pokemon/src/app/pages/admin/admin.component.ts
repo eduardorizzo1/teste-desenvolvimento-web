@@ -22,7 +22,7 @@ export class AdminComponent implements OnInit {
   dataSource = new MatTableDataSource<Pokemon>(this.pokemons);
   bload: boolean = false;
   newPokemon: Pokemon;
-  editPokemon: Pokemon[] = [];
+  editPokemon: Pokemon;
   displayedColumns: string[] = [
     "Row",
     "Name",
@@ -88,6 +88,8 @@ export class AdminComponent implements OnInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
+  //=====================================================
+
   addPokemon() {
     const dialog = this.dialogRef.open(AddDialogComponent);
     dialog.afterClosed().subscribe(res => {
@@ -96,23 +98,6 @@ export class AdminComponent implements OnInit {
         this.post(this.newPokemon);
       }
     });
-  }
-
-  editar(pokemon: Pokemon) {
-    console.log(pokemon);
-    const dialog = this.dialogRef.open(EditRemoveDialogComponent, {
-      data: [pokemon]
-    });
-    dialog.afterClosed().subscribe(res => {
-      if (res) this.update(res);
-    });
-  }
-
-  update(pokemon: Pokemon) {
-    this.pokemonService.edit(pokemon).subscribe(
-      () => this.toastrInfo(),
-      () => this.tostrError("editar")
-    );
   }
 
   post(pokemon: Pokemon) {
@@ -124,6 +109,28 @@ export class AdminComponent implements OnInit {
     );
   }
 
+  //================================================================
+
+  editar(pokemon: Pokemon) {
+    const dialog = this.dialogRef.open(EditRemoveDialogComponent, {
+      data: [pokemon]
+    });
+    dialog.afterClosed().subscribe(res => {
+      console.log(res);
+      if (res) {
+        alert("Pokémon foi alterado.");
+        this.editPokemon = res;
+        this.update(this.editPokemon);
+        this.getAllPokemons();
+      }
+    });
+  }
+
+  update(pokemon: Pokemon) {
+    this.pokemonService.edit(pokemon).subscribe();
+  }
+
+  //================================================================
   delete(pokemon: Pokemon) {
     const confirmDelete = confirm("Tem certeza que deseja excluir o Pokémon ?");
     if (confirmDelete) {

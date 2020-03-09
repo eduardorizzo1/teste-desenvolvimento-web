@@ -1,8 +1,7 @@
-import { PokemonsService } from "src/app/services/pokemons.service";
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { Pokemon } from "src/app/models/pokemon";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: "app-edit-remove-dialog",
@@ -53,9 +52,7 @@ export class EditRemoveDialogComponent implements OnInit {
     this.pokemon = p;
   }
 
-  ngOnInit() {
-    // this.buildPokemonForm();
-  }
+  ngOnInit() {}
 
   cancelar() {
     this.dialogRef.close();
