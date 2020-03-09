@@ -13,7 +13,6 @@ class PokemonController {
   }
 
   async post(req, res) {
-    console.log(req.body);
     let pokemon = await Pokemon.create(req.body);
     return res.status(201).send(pokemon);
   }
