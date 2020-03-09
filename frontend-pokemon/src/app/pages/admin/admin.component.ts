@@ -20,10 +20,8 @@ import { AddDialogComponent } from "./add-dialog/add-dialog.component";
 export class AdminComponent implements OnInit {
   pokemons: Pokemon[] = [];
   dataSource = new MatTableDataSource<Pokemon>(this.pokemons);
-  expandedElement: Pokemon | null;
   bload: boolean = false;
   newPokemon: Pokemon;
-  hidden: boolean = true;
   displayedColumns: string[] = [
     "Row",
     "Name",

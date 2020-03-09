@@ -18,4 +18,8 @@ export class MenuToolbarComponent implements OnInit {
   adminRoute() {
     this.router.navigateByUrl("/admin");
   }
+
+  homeRoute() {
+    this.router.navigateByUrl("/");
+  }
 }

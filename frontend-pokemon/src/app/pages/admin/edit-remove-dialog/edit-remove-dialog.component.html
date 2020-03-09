@@ -1,122 +1,125 @@
 <div class="col-12 d-inline-flex justify-content-between">
-  <h4>Editar ou excluir Pokémon</h4>
+  <h4>Editar Pokémon</h4>
   <mat-icon (click)="cancelar()" class="div-hover">cancel</mat-icon>
 </div>
 <hr>
 
-<form [formGroup]="pokemonForm" *ngFor="let p of pokemon">
-  <div class="col-12 p-0 d-inline-flex">
-    <div class="col-10">
-      <mat-form-field class="col-2">
-        <mat-label>Row:</mat-label>
-        <input matInput type="text" formControlName="Row">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>Name:</mat-label>
-        <input matInput type="text" formControlName="Name" value="{{p.Name}}">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>PokedexNumber:</mat-label>
-        <input matInput type="number" formControlName="PokedexNumber">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>ImgName:</mat-label>
-        <input matInput type="number" formControlName="ImgName">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>Generation:</mat-label>
-        <input matInput type="number" formControlName="Generation">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>EvolutionStage:</mat-label>
-        <input matInput type="number" formControlName="EvolutionStage">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>FamilyID:</mat-label>
-        <input matInput type="number" formControlName="FamilyID">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>Type1:</mat-label>
-        <input matInput type="text" formControlName="Type1">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>Type2:</mat-label>
-        <input matInput type="text" formControlName="Type2">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>Weather1:</mat-label>
-        <input matInput type="text" formControlName="Weather1">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>Weather2:</mat-label>
-        <input matInput type="text" formControlName="Weather2">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>StatTotal:</mat-label>
-        <input matInput type="number" formControlName="StatTotal">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>ATK:</mat-label>
-        <input matInput type="number" formControlName="ATK">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>DEF:</mat-label>
-        <input matInput type="number" formControlName="DEF">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>STA:</mat-label>
-        <input matInput type="number" formControlName="STA">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>Aquireable:</mat-label>
-        <input matInput type="number" formControlName="Aquireable">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>Spawns:</mat-label>
-        <input matInput type="number" formControlName="Spawns">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>Regional:</mat-label>
-        <input matInput type="number" formControlName="Regional">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>Raidable:</mat-label>
-        <input matInput type="number" formControlName="Raidable">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>Hatchable:</mat-label>
-        <input matInput type="number" formControlName="Hatchable">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>FutureEvolve:</mat-label>
-        <input matInput type="text" formControlName="FutureEvolve">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>cp40:</mat-label>
-        <input matInput type="number" formControlName="cp40">
-      </mat-form-field>
-      <mat-form-field class="col-2">
-        <mat-label>cp39:</mat-label>
-        <input matInput type="number" formControlName="cp39">
-      </mat-form-field>
-    </div>
-    <div class="col-2 d-flex flex-column  border-left pt-2">
-      <mat-checkbox matInput type="text" formControlName="Evolved" color="primary">Evolved</mat-checkbox>
-      <mat-checkbox matInput type="text" formControlName="CrossGen" color="primary">CrossGen</mat-checkbox>
-      <mat-checkbox matInput type="text" formControlName="Legendary" color="primary">Legendary</mat-checkbox>
-      <mat-checkbox matInput type="text" formControlName="Shiny" color="primary">Shiny</mat-checkbox>
-      <mat-checkbox matInput type="text" formControlName="Nest" color="primary">Nest</mat-checkbox>
-      <mat-checkbox matInput type="text" formControlName="New" color="primary">New</mat-checkbox>
-      <mat-checkbox matInput type="text" formControlName="NotGettable" color="primary">NotGettable</mat-checkbox>
-    </div>
+<div class="col-12 p-0 d-inline-flex" *ngFor="let p of pokemon">
+  <div class="col-10">
+    <mat-form-field class="col-2">
+      <mat-label>Row:</mat-label>
+      <input matInput type="text" [(ngModel)]="p.Row" value="{{ p.Row }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>Name:</mat-label>
+      <input matInput type="text" [(ngModel)]="p.Name" value="{{p.Name}}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>PokedexNumber:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.PokedexNumber" value="{{p.PokedexNumber}}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>ImgName:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.ImgName" value="{{p.ImgName}}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>Generation:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.Generation" value="{{p.Generation}}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>EvolutionStage:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.EvolutionStage" value="{{ p.EvolutionStage }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>FamilyID:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.FamilyID" value="{{ p.FamilyID }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>Type1:</mat-label>
+      <input matInput type="text" [(ngModel)]="p.Type1" value="{{ p.Type1 }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>Type2:</mat-label>
+      <input matInput type="text" [(ngModel)]="p.Type2" value="{{ p.Type2 }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>Weather1:</mat-label>
+      <input matInput type="text" [(ngModel)]="p.Weather1" value="{{ p.Weather1 }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>Weather2:</mat-label>
+      <input matInput type="text" [(ngModel)]="p.Weather2" value="{{ p.Weather2 }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>StatTotal:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.StatTotal" value="{{ p.StatTotal }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>ATK:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.ATK" value="{{ p.ATK }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>DEF:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.DEF" value="{{ p.DEF }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>STA:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.STA" value="{{ p.STA }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>Aquireable:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.Aquireable" value="{{ p.Aquireable }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>Spawns:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.Spawns" value="{{ p.Spawns }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>Regional:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.Regional" value="{{ p.Regional }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>Raidable:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.Raidable" value="{{ p.Raidable }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>Hatchable:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.Hatchable" value="{{ p.Hatchable }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>FutureEvolve:</mat-label>
+      <input matInput type="text" [(ngModel)]="p.FutureEvolve" value="{{ p.FutureEvolve }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>cp40:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.cp40" value="{{ p.cp40 }}">
+    </mat-form-field>
+    <mat-form-field class="col-2">
+      <mat-label>cp39:</mat-label>
+      <input matInput type="number" [(ngModel)]="p.cp39" value="{{ p.cp39 }}">
+    </mat-form-field>
   </div>
-
-  <hr>
-  <div class=" col-12 d-flex justify-content-end">
-    <button mat-raised-button color="primary">
-      <mat-icon class="mr-1">edit</mat-icon>
-      EDITAR
-    </button>
+  <div class="col-2 d-flex flex-column  border-left pt-2">
+    <mat-checkbox matInput [(ngModel)]="p.Evolved" color="primary" [checked]="p.Evolved">
+      Evolved
+    </mat-checkbox>
+    <mat-checkbox matInput [(ngModel)]="p.CrossGen" color="primary" value="{{ p.CrossGen }}">CrossGen
+    </mat-checkbox>
+    <mat-checkbox matInput [(ngModel)]="p.Legendary" color="primary" value="{{ p.Legendary }}">Legendary
+    </mat-checkbox>
+    <mat-checkbox matInput [(ngModel)]="p.Shiny" color="primary" value="{{ p.Shiny }}">Shiny
+    </mat-checkbox>
+    <mat-checkbox matInput [(ngModel)]="p.Nest" color="primary" value="{{ p.Nest }}">Nest</mat-checkbox>
+    <mat-checkbox matInput [(ngModel)]="p.New" color="primary" value="{{ p.New }}">New</mat-checkbox>
+    <mat-checkbox matInput [(ngModel)]="p.NotGettable" color="primary" value="{{ p.NotGettable }}">
+      NotGettable</mat-checkbox>
   </div>
+</div>
 
-</form>
+<hr>
+<div class=" col-12 d-flex justify-content-end">
+  <button mat-raised-button color="primary" [mat-dialog-close]="">
+    <mat-icon class="mr-1">edit</mat-icon>
+    EDITAR
+  </button>
+</div>

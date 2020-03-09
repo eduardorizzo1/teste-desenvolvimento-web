@@ -2,7 +2,6 @@ import { PokemonsService } from "src/app/services/pokemons.service";
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { Pokemon } from "src/app/models/pokemon";
-import { ToastrService } from "ngx-toastr";
 import { FormGroup, FormBuilder } from "@angular/forms";
 
 @Component({
@@ -13,6 +12,7 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 export class EditRemoveDialogComponent implements OnInit {
   pokemon: Pokemon[] = [];
   pokemonForm: FormGroup;
+  checked: boolean = true;
   columns: string[] = [
     "Row",
     "Name",

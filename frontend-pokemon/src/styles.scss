@@ -10,23 +10,19 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-$bg-toolbar: linear-gradient(
-  to bottom,
+$bg-toolbar: linear-gradient(to bottom,
   rgb(0, 0, 65),
   rgb(0, 0, 92),
   rgb(3, 3, 124),
-  rgb(0, 0, 161)
-) !important;
-$bg-sidenav: linear-gradient(
-  to bottom,
+  rgb(0, 0, 161)) !important;
+$bg-sidenav: linear-gradient(to bottom,
   white,
   white,
   white,
   white,
   white,
   rgb(204, 226, 250),
-  darkgreen
-) !important;
+  darkgreen) !important;
 
 .div-hover {
   cursor: pointer;
@@ -52,4 +48,9 @@ $bg-sidenav: linear-gradient(
 
 .h-64 {
   height: 64px;
+}
+
+.img-logo-toolbar {
+  height: 120px;
+  width: 150px;
 }
