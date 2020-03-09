@@ -1,23 +1,6 @@
-ng-container {
-  width: 80px;
-}
-
-mat-header-cell {
-  width: 120px;
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
-  color: #000;
-  margin-bottom: 1em;
-}
-
 mat-cell {
   display: flex;
   justify-content: center;
-}
-
-.div-table {
-  height: 650px;
 }
 
 mat-row.row-hover:hover {

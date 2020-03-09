@@ -52,3 +52,21 @@ $bg-sidenav: linear-gradient(to bottom,
   height: 120px;
   width: 150px;
 }
+
+.div-table {
+  height: 100%;
+  width: 100%;
+}
+
+ng-container {
+  width: 80px;
+}
+
+mat-header-cell {
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 1em;
+}
