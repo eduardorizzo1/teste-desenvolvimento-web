@@ -8,8 +8,8 @@ import { map, tap } from "rxjs/operators";
   providedIn: "root"
 })
 export class PokemonsService {
-  // readonly apiUrl = "https://backend-pokemons.herokuapp.com/api/pokemon";
-  readonly apiUrl = "http://localhost:5000/api/pokemon";
+  readonly apiUrl = "https://backend-pokemons.herokuapp.com/api/pokemon";
+  // readonly apiUrl = "http://localhost:5000/api/pokemon";
 
   constructor(private http: HttpClient) {}
 
