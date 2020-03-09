@@ -1,7 +1,6 @@
-<div class="col-12">
-  <h6>
-    Adicionar um Pokémon:
-  </h6>
+<div class="col-12 d-inline-flex justify-content-between">
+  <h4>Adicionar Pokémon</h4>
+  <mat-icon (click)="cancelar()" class="div-hover">cancel</mat-icon>
 </div>
 <hr>
 <form [formGroup]="pokemonForm" (submit)="submitForm()">
@@ -113,6 +112,7 @@
 
   <hr>
   <div class="col-12 d-flex justify-content-end">
-    <button mat-raised-button type="submit" color="primary">Adicionar</button>
+    <button mat-raised-button type="submit" color="primary" [disabled]="!pokemonForm.valid"
+      [mat-dialog-close]="pokemonForm.value">Adicionar</button>
   </div>
 </form>

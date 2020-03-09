@@ -1,8 +1,7 @@
 import { Pokemon } from "./../../../models/pokemon";
-import { PokemonsService } from "src/app/services/pokemons.service";
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { ToastrService } from "ngx-toastr";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { MatDialogRef } from "@angular/material";
 
 @Component({
   selector: "app-add-dialog",
@@ -11,11 +10,11 @@ import { ToastrService } from "ngx-toastr";
 })
 export class AddDialogComponent implements OnInit {
   pokemonForm: FormGroup;
+  pokemon: Pokemon[] = [];
 
   constructor(
     public fb: FormBuilder,
-    private pokemonService: PokemonsService,
-    private toastr: ToastrService
+    public dialogRef: MatDialogRef<Pokemon>
   ) {}
 
   ngOnInit() {
@@ -25,7 +24,7 @@ export class AddDialogComponent implements OnInit {
   buildPokemonForm() {
     this.pokemonForm = this.fb.group({
       Row: [null],
-      Name: [null],
+      Name: [null, Validators.required],
       PokedexNumber: [null],
       ImgName: [null],
       Generation: [null],
@@ -58,19 +57,10 @@ export class AddDialogComponent implements OnInit {
   }
 
   submitForm() {
-    this.addError();
-    const pokemon: Pokemon = this.pokemonForm.value;
-    this.pokemonService.post(pokemon).subscribe(
-      res => this.addSuccess(),
-      err => this.addError()
-    );
+    this.pokemon = this.pokemonForm.value;
   }
 
-  addSuccess() {
-    this.toastr.success("Pokémon adicionado com sucesso!");
-  }
-
-  addError() {
-    this.toastr.error("Erro ao adicionar Pokémon.");
+  cancelar() {
+    this.dialogRef.close();
   }
 }

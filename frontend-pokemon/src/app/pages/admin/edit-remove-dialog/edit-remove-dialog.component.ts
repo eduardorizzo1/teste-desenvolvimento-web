@@ -70,10 +70,7 @@ export class EditRemoveDialogComponent implements OnInit {
     );
 
     if (confirmDelete) {
-      this.pokemonService.delete(pokemon._id).subscribe(
-        () => (this.pokemon = this.pokemon.filter(e => e !== pokemon)),
-        err => console.log(err)
-      );
+      this.dialogRef.close(pokemon);
     }
   }
 

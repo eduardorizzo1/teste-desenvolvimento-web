@@ -1,15 +1,15 @@
 import { Pokemon } from "src/app/models/pokemon";
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { Observable, BehaviorSubject } from "rxjs";
+import { map, tap } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root"
 })
 export class PokemonsService {
-  // readonly apiUrl = "https://backend-pokemons.herokuapp.com/api/pokemon";
-  readonly apiUrl = "http://localhost:5000/api/pokemon";
+  readonly apiUrl = "https://backend-pokemons.herokuapp.com/api/pokemon";
+  // readonly apiUrl = "http://localhost:5000/api/pokemon";
 
   constructor(private http: HttpClient) {}
 
