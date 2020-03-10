@@ -7,12 +7,12 @@ const pokemonRoute = require('../routes/pokemon-route');
 class App {
   constructor() {
     this.server = express();
-    express().use(cors());
     this.middleware();
     this.routes();
   }
 
   middleware() {
+    this.server.use(cors());
     this.server.use(bodyParser.json());
     this.server.use(bodyParser.urlencoded({ extended: true }));
   }
